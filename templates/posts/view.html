@@ -1,0 +1,48 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+
+<article class="posts--single">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/" class="text-decoration-none"><i class="fa fa-home"></i> Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'app.modules.posts:posts.index' %}" class="text-decoration-none">Posts</a></li>
+
+            {% if post.published_at is empty %}
+                <li class="breadcrumb-item"><a href="{% url 'app.modules.posts:posts.drafts' %}" class="text-decoration-none">Drafts</a></li>
+            {% endif %}
+
+            <li class="breadcrumb-item active" aria-current="page">{{ post.title }}</li>
+        </ol>
+    </nav>
+
+    <div class="heading">
+        <h2 class="heading-title">{{ post.title }}</h2>
+    </div>
+
+    <div class="post-meta">
+        {% if post.published_at %}
+            <div class="post-date">
+                <i class="fa fa-clock"></i>
+                <span class="text-uppercase">{{ post.published_at|date:'d M, y H:m A' }}</span>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="post-body my-4">
+        {{ post.content|safe|linebreaksbr }}
+    </div>
+
+    <div class="post-footer">
+        {% if user.is_authenticated %}
+            {% if post.published_at is empty %}
+                <a class="btn btn-success btn-sm" href="{% url 'app.modules.posts:posts.publish' pk=post.pk %}"><i class="fa fa-bullhorn"></i> Publish</a>
+            {% endif %}
+
+            <a class="btn btn-primary btn-sm" href="{% url 'app.modules.posts:posts.edit' pk=post.pk %}"><i class="fa fa-pencil"></i> Edit</a>
+            <a class="btn btn-danger btn-sm" href="{% url 'app.modules.posts:posts.delete' pk=post.pk %}"><i class="fa fa-trash"></i> Delete</a>
+        {% endif %}
+    </div>
+</article>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+<div class="posts--drafts">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/" class="text-decoration-none"><i class="fa fa-home"></i> Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'app.modules.posts:posts.index' %}" class="text-decoration-none">Posts</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Drafts</li>
+        </ol>
+    </nav>
+
+    <table class="table table-success table-bordered table-striped my-4">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Created</th>
+                <th scope="col">Updated</th>
+                <th scope="col" class="text-center" style="width:160px">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+                <tr>
+                    <th scope="row"><a href="{% url 'app.modules.posts:posts.view' pk=post.pk %}" class="text-decoration-none text-dark">{{ post.title }}</a></th>
+                    <td>{{ post.created_at|date:'d-m-Y H:s A' }}</td>
+                    <td>{{ post.updated_at|date:'d-m-Y H:s A' }}</td>
+                    <td class="actions text-center">
+                        <a class="btn btn-success btn-sm" href="{% url 'app.modules.posts:posts.publish' pk=post.pk %}"><i class="fa fa-bullhorn"></i></a>
+                        <a class="btn btn-primary btn-sm" href="{% url 'app.modules.posts:posts.edit' pk=post.pk %}"><i class="fa fa-pencil"></i></a>
+                        <a class="btn btn-danger btn-sm" href="{% url 'app.modules.posts:posts.delete' pk=post.pk %}"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
