@@ -43,6 +43,8 @@
             <a class="btn btn-danger btn-sm" href="{% url 'app.modules.posts:posts.delete' pk=post.pk %}"><i class="fa fa-trash"></i> Delete</a>
         {% endif %}
     </div>
+      
+    {% include 'comments/comments.html' with subject=post %}
 </article>
 
 {% endblock %}
