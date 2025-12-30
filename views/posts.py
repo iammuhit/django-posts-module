@@ -20,7 +20,7 @@ class IndexView(generic.ListView):
         return Post.objects.filter(published_at__lte=timezone.now()).order_by('-published_at')
 
 
-class DetailView(generic.DetailView):
+class SingleView(generic.DetailView):
     model = Post
     template_name = 'posts/view.html'
 
