@@ -17,7 +17,19 @@ class IndexView(generic.ListView):
     context_object_name = 'posts'
     
     def get_queryset(self):
-        return Post.objects.filter(published_at__lte=timezone.now()).order_by('-published_at')
+        queryset = Post.objects.filter(status='publish')
+        category = self.request.GET.get('category')
+        order_by = self.request.GET.get('order')
+
+        if category:
+            if category.isdigit(): queryset = queryset.filter(category__id=category)
+            else: queryset = queryset.filter(category__slug=category)
+
+        if order_by:
+            if order_by.lower() == 'asc': queryset = queryset.order_by('-published_at')
+            elif order_by.lower() == 'desc': queryset = queryset.order_by('published_at')
+        
+        return queryset
 
 
 class SingleView(generic.DetailView):
@@ -61,12 +73,13 @@ class DraftsView(LoginRequiredMixin, generic.ListView):
     context_object_name = 'posts'
 
     def get_queryset(self):
-        return Post.objects.filter(published_at__isnull=True).order_by('created_at')
+        return Post.objects.filter(status='draft').order_by('created_at')
 
 
 @login_required(login_url=settings.LOGIN_URL)
 def publish(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    post.publish()
+    post.status = 'publish'
+    post.save()
 
     return redirect('app.modules.posts:posts.view', pk=pk)
