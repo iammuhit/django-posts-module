@@ -1,0 +1,39 @@
+{% extends "layouts/base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+
+<div class="categories">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/" class="text-decoration-none"><i class="fa fa-home"></i> {% trans 'Home' %}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{% trans 'Categories' %}</li>
+        </ol>
+    </nav>
+
+    <div class="heading">
+        <h2 class="heading-title">{% trans 'Categories' %}</h2>
+    </div>
+
+    <div class="content row my-4">
+        {% if categories %}
+            <div class="col-sm-6 col-md-4">
+                {% for category in categories %}
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title my-0">
+                                <a href="{% url 'app.modules.posts:categories.view' slug=category.slug %}" class="text-decoration-none">{{ category.name }}</a>
+                            </h4>
+                        </div>
+                        <div class="card-body">
+                            {{ category.description|safe }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

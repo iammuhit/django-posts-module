@@ -5,6 +5,9 @@ from app.modules.posts import views
 app_name = 'app.modules.posts'
 
 urlpatterns = [
+    path('categories/', views.categories.IndexView.as_view(), name='categories.index'),
+    path('categories/<slug:slug>/', views.categories.SingleView.as_view(), name='categories.view'),
+
     path('', views.posts.IndexView.as_view(), name='posts.index'),
     path('create/', views.posts.CreateView.as_view(), name='posts.create'),
     path('<int:pk>/', views.posts.SingleView.as_view(), name='posts.view'),
