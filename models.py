@@ -13,8 +13,9 @@ class Category(models.Model):
     updated_at   = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name = _('Category')
-        verbose_name_plural = _('Categories')
+        verbose_name = _('category')
+        verbose_name_plural = _('categories')
+        db_table = "posts_categories"
 
     def __str__(self):
         return self.name
@@ -37,8 +38,9 @@ class Post(models.Model):
     updated_at   = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name = _('Post')
-        verbose_name_plural = _('Posts')
+        verbose_name = _('post')
+        verbose_name_plural = _('posts')
+        db_table = 'posts_posts'
 
     def __str__(self):
         return self.title
