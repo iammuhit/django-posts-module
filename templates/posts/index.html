@@ -1,5 +1,7 @@
 {% extends "layouts/base.html" %}
 
+{% load i18n comments %}
+
 {% block content %}
 
 <div class="posts">
@@ -31,7 +33,7 @@
                                 <i class="fa fa-comment"></i>
                                 <span>Comments:</span>
                                 <a href="{% url 'app.modules.posts:posts.view' pk=post.pk %}" class="card-link text-decoration-none">
-                                    {{ post.comments.count }}
+                                    {% get_comment_count subject=post as comment_count %}{{ comment_count }}
                                 </a>
                             </div>
                         </div>
