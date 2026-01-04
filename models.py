@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.contrib import admin
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
@@ -54,3 +55,8 @@ class Post(models.Model):
 
     def comments(self):
         return self.comments.filter(approved=True)
+    
+    @property
+    @admin.display(description=_('Author'))
+    def author_name(self):
+        return f'{self.author.first_name} {self.author.last_name}'
