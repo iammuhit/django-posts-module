@@ -16,9 +16,9 @@ dynamic = ["version"]
 requires-python = ">= 3.14"
 authors = [{name = "Nurul Amin Muhit", email = "me@muhit.me"}]
 maintainers = [{name = "Mayarun Labs", email = "hello@mayarun.io"}]
-description = "The navigation module for MayaCMS."
+description = "The posts module for MayaCMS."
 readme = "readme.rst"
-license = "license.txt"
+license = "MIT"
 keywords = ["django", "mayacms", "modules", "blog", "posts", "categories"]
 dependencies = ["mayacms >= 0.1"]
 classifiers = [
