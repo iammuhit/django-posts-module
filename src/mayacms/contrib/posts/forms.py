@@ -1,6 +1,6 @@
 from django import forms
 
-from app.modules.posts.models import Post
+from mayacms.contrib.posts.models import Post
 
 
 class PostForm(forms.ModelForm):

@@ -1,4 +1,4 @@
-from app.modules.posts.models import Category
+from mayacms.contrib.posts.models import Category
 
 
 def categories(request):

@@ -6,10 +6,10 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/" class="text-decoration-none"><i class="fa fa-home"></i> Home</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'app.modules.posts:posts.index' %}" class="text-decoration-none">Posts</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'mayacms.contrib.posts:posts.index' %}" class="text-decoration-none">Posts</a></li>
 
             {% if post.status == 'draft' %}
-                <li class="breadcrumb-item"><a href="{% url 'app.modules.posts:posts.drafts' %}" class="text-decoration-none">Drafts</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'mayacms.contrib.posts:posts.drafts' %}" class="text-decoration-none">Drafts</a></li>
             {% endif %}
 
             <li class="breadcrumb-item active" aria-current="page">{{ object }}</li>
@@ -28,9 +28,9 @@
         <button type="submit" class='btn btn-danger btn-delete'><i class="fa fa-trash"></i> Confirm</button>
 
         {% if post.status == 'draft' %}
-            <a href="{% url 'app.modules.posts:posts.drafts' %}" class='btn btn-secondary btn-cancel'><i class="fa fa-xmark"></i> Cancel</a>
+            <a href="{% url 'mayacms.contrib.posts:posts.drafts' %}" class='btn btn-secondary btn-cancel'><i class="fa fa-xmark"></i> Cancel</a>
         {% else %}
-            <a href="{% url 'app.modules.posts:posts.index' %}" class='btn btn-secondary btn-cancel'><i class="fa fa-xmark"></i> Cancel</a>
+            <a href="{% url 'mayacms.contrib.posts:posts.index' %}" class='btn btn-secondary btn-cancel'><i class="fa fa-xmark"></i> Cancel</a>
         {% endif %}
     </form>
 </article>

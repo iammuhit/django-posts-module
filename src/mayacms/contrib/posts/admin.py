@@ -1,7 +1,7 @@
 from django.contrib import admin, messages
 from django.utils.translation import ngettext
 
-from app.modules.posts.models import Category, Post
+from mayacms.contrib.posts.models import Category, Post
 
 # admin.site.disable_action('delete_selected')
 

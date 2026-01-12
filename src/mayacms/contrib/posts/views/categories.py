@@ -2,7 +2,7 @@ from django.conf import settings
 from django.utils import timezone
 from django.views import generic
 
-from app.modules.posts.models import Category
+from mayacms.contrib.posts.models import Category
 
 
 class IndexView(generic.ListView):

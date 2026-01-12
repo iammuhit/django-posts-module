@@ -6,9 +6,9 @@ from django.urls import reverse_lazy
 from django.utils import timezone
 from django.views import generic
 
-from app.modules.posts import REDIRECT_FIELD_NAME
-from app.modules.posts.forms import PostForm
-from app.modules.posts.models import Post
+from mayacms.contrib.posts import REDIRECT_FIELD_NAME
+from mayacms.contrib.posts.forms import PostForm
+from mayacms.contrib.posts.models import Post
 
 
 class IndexView(generic.ListView):
@@ -61,7 +61,7 @@ class UpdateView(LoginRequiredMixin, generic.UpdateView):
 
 class DeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Post
-    success_url = reverse_lazy('app.modules.posts:posts.index')
+    success_url = reverse_lazy('mayacms.contrib.posts:posts.index')
     template_name = 'posts/delete-confirmation.html'
 
 
@@ -82,4 +82,4 @@ def publish(request, pk):
     post.status = 'publish'
     post.save()
 
-    return redirect('app.modules.posts:posts.view', pk=pk)
+    return redirect('mayacms.contrib.posts:posts.view', pk=pk)

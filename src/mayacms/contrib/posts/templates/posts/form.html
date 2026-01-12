@@ -6,10 +6,10 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/" class="text-decoration-none"><i class="fa fa-home"></i> Home</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'app.modules.posts:posts.index' %}" class="text-decoration-none">Posts</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'mayacms.contrib.posts:posts.index' %}" class="text-decoration-none">Posts</a></li>
 
             {% if post.published_at is empty %}
-                <li class="breadcrumb-item"><a href="{% url 'app.modules.posts:posts.drafts' %}" class="text-decoration-none">Drafts</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'mayacms.contrib.posts:posts.drafts' %}" class="text-decoration-none">Drafts</a></li>
             {% endif %}
 
             <li class="breadcrumb-item active" aria-current="page">{{ template.title|default:'New Post' }}</li>

@@ -22,7 +22,7 @@ class Category(models.Model):
         return self.name
     
     def get_absolute_url(self):
-        return reverse('app.modules.posts:categories.view', kwargs={'slug': self.slug})
+        return reverse('mayacms.contrib.posts:categories.view', kwargs={'slug': self.slug})
     
 
 class Post(models.Model):
@@ -47,7 +47,7 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('app.modules.posts:posts.view', kwargs={'pk': self.pk})
+        return reverse('mayacms.contrib.posts:posts.view', kwargs={'pk': self.pk})
     
     def publish(self):
         self.published_at = timezone.now()

@@ -1,2 +1,2 @@
-from app.modules.posts.views.categories import *
-from app.modules.posts.views.posts import *
+from mayacms.contrib.posts.views.categories import *
+from mayacms.contrib.posts.views.posts import *

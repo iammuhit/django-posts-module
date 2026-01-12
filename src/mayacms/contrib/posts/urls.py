@@ -1,8 +1,8 @@
 from django.urls import path
 
-from app.modules.posts import views
+from mayacms.contrib.posts import views
 
-app_name = 'app.modules.posts'
+app_name = 'mayacms.contrib.posts'
 
 urlpatterns = [
     path('categories/', views.categories.IndexView.as_view(), name='categories.index'),
